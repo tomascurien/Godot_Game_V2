@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://daxj2a1rno54n"]
+
+[ext_resource type="Script" uid="uid://dvb3j7m5kqjd8" path="res://final_label.gd" id="1_6j5ic"]
+
+[sub_resource type="SystemFont" id="SystemFont_3bqg2"]
+font_names = PackedStringArray("Serif")
+subpixel_positioning = 0
+
+[node name="FinalLabel" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_6j5ic")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 329.0
+offset_top = 243.0
+offset_right = 706.0
+offset_bottom = 302.0
+theme_override_colors/font_color = Color(0.972549, 0.984314, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_3bqg2")
+theme_override_font_sizes/font_size = 52
+text = "¡HAS GANADO!"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 437.0
+offset_top = 483.0
+offset_right = 561.0
+offset_bottom = 514.0
+text = "Volver al menú"
+
+[connection signal="pressed" from="Button" to="." method="_on_VolverAlMenu_pressed"]

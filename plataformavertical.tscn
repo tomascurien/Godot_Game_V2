@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd8diy7m56pjd"]
+
+[ext_resource type="Texture2D" uid="uid://yqff8j6x588k" path="res://assets/sprites/castle/Tilesetv3.png" id="1_4edfu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4edfu"]
+size = Vector2(45, 10)
+
+[node name="plataformavertical" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4edfu")
+region_enabled = true
+region_rect = Rect2(145, 144, 46, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_4edfu")

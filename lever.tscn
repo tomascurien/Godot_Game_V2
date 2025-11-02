@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://btehmpq1o6uhx"]
+
+[ext_resource type="Texture2D" uid="uid://yqff8j6x588k" path="res://assets/sprites/castle/Tilesetv3.png" id="1_0ohsc"]
+[ext_resource type="Script" uid="uid://dov431itdqvcy" path="res://lever.gd" id="1_1btnt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1btnt"]
+size = Vector2(25, 27)
+
+[node name="lever" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_1btnt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0ohsc")
+region_enabled = true
+region_rect = Rect2(62, 788, 20, 14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -10)
+shape = SubResource("RectangleShape2D_1btnt")

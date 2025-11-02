@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://jvp7j7o1ip6s"]
+
+[ext_resource type="Script" uid="uid://br52gvde6xwge" path="res://muerte_label.gd" id="1_wp4t6"]
+
+[sub_resource type="SystemFont" id="SystemFont_p8thr"]
+font_names = PackedStringArray("Serif")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_wp4t6"]
+font_names = PackedStringArray("Serif")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_n23m7"]
+font_names = PackedStringArray("Serif")
+subpixel_positioning = 0
+
+[node name="Muerte" type="CanvasLayer"]
+script = ExtResource("1_wp4t6")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 431.0
+offset_top = 403.0
+offset_right = 546.0
+offset_bottom = 434.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_p8thr")
+text = "Volver a jugar"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 329.0
+offset_top = 243.0
+offset_right = 661.0
+offset_bottom = 302.0
+theme_override_colors/font_color = Color(0.972549, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_wp4t6")
+theme_override_font_sizes/font_size = 52
+text = "HAS MUERTO"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 437.0
+offset_top = 483.0
+offset_right = 543.0
+offset_bottom = 510.0
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_n23m7")
+text = "Volver al menú"
+
+[connection signal="pressed" from="Button" to="." method="_on_VolverAJugar_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_VolverAlMenu_pressed"]

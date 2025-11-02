@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqggek607bud2"]
+
+[ext_resource type="Script" uid="uid://dlbjkbg4at4tp" path="res://portada.gd" id="1_i68s5"]
+[ext_resource type="Texture2D" uid="uid://b57fpcvtl2i52" path="res://assets/sprites/castle/Gemini_Generated_Image_bpdxhsbpdxhsbpdx.png" id="2_rutc4"]
+
+[sub_resource type="SystemFont" id="SystemFont_iqfp0"]
+font_names = PackedStringArray("Serif")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bn2kn"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_3bevb"]
+font_names = PackedStringArray("Serif")
+
+[node name="Portada" type="CanvasLayer"]
+script = ExtResource("1_i68s5")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 446.0
+offset_top = 403.0
+offset_right = 651.0
+offset_bottom = 439.0
+theme_override_fonts/font = SubResource("SystemFont_iqfp0")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/hover = SubResource("StyleBoxFlat_bn2kn")
+text = "Empezar la aventura"
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 0, 1)
+offset_left = 398.0
+offset_top = 193.0
+offset_right = 695.0
+offset_bottom = 234.0
+theme_override_fonts/font = SubResource("SystemFont_3bevb")
+theme_override_font_sizes/font_size = 37
+text = "Ascenso del Traidor"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+offset_right = 1155.0
+offset_bottom = 1024.0
+mouse_filter = 2
+texture = ExtResource("2_rutc4")
+expand_mode = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_Jugar_pressed"]

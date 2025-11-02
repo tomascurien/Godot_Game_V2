@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://rgndgx54ny3e"]
+
+[ext_resource type="Texture2D" uid="uid://jtkn5folpb12" path="res://assets/sprites/castle/CastleTiles.png" id="1_g2tbl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oq5cr"]
+size = Vector2(30, 30)
+
+[node name="BOX" type="RigidBody2D"]
+lock_rotation = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g2tbl")
+region_enabled = true
+region_rect = Rect2(32, 192, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oq5cr")
