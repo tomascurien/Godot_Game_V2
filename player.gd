@@ -9,6 +9,12 @@ var is_attacking: bool = false
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_area: Area2D = $AttackArea
+@onready var attack_sound = $Ataque
+@onready var jump_sound = $Salto
+@onready var movement_sound = $Movimiento
+@onready var death_sound = $Muerte
+@onready var footstep_timer = $FootstepTimer
+
 signal died
 
 func _ready():
@@ -31,13 +37,14 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 		if not is_attacking:
 			anim.play("jump")
-	
+			jump_sound.play()
 	# Ataque
 	if Input.is_action_just_pressed("move_attack") and not is_attacking:
 		print("¡ATAQUE INICIADO!")
 		is_attacking = true
 		velocity.x = 0
 		anim.play("attack")
+		attack_sound.play()
 		
 		# Activar área de ataque
 		attack_area.monitoring = true
@@ -58,6 +65,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 		if is_on_floor() and anim.animation != "jump":
 			anim.play("walk")
+			manage_footstep_sound()
 		anim.flip_h = direction < 0
 		
 		# NUEVO: Voltear el AttackArea según la dirección
@@ -111,11 +119,18 @@ func die():
 		return 
 
 	print("El jugador ha muerto. Emitiendo señal.")
-	
 	# 3. Emite la señal para que el nivel la escuche
 	died.emit()
 	
 	# Desactiva al jugador
 	$CollisionShape2D.disabled = true
 	anim.play("die")
-	
+	death_sound.play()
+
+func manage_footstep_sound():
+	# 2. Comprueba si el jugador se está moviendo Y está en el suelo
+	if (velocity.x != 0) and is_on_floor():
+		# Comprueba si el temporizador no está corriendo
+		if footstep_timer.is_stopped():
+			movement_sound.play()
+			footstep_timer.start()

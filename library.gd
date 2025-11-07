@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 @export var lore_text: String = "Una voz susurra desde los libros: 'El rey teme lo que no puede controlar.'"
-
+@onready var popup_sound = $Area2D/PopupSound
 var player_in_range = false
 var popup_instance = null
 
@@ -13,6 +13,7 @@ func _on_body_entered(body: Node) -> void:
 	if body is CharacterBody2D:
 		player_in_range = true
 		show_lore_popup(lore_text)
+		popup_sound.play()
 
 func _on_body_exited(body: Node) -> void:
 	if body is CharacterBody2D:

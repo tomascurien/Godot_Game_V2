@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cxgxrjoaxbe6m"]
+[gd_scene load_steps=48 format=3 uid="uid://cxgxrjoaxbe6m"]
 
 [ext_resource type="Script" uid="uid://rjxcvwgtkmg7" path="res://level_1.gd" id="1_65or1"]
 [ext_resource type="PackedScene" uid="uid://b8xis3qdewodj" path="res://player.tscn" id="2_hn12h"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://d7tvir2qb5pu" path="res://library.tscn" id="14_ggavl"]
 [ext_resource type="PackedScene" uid="uid://jvp7j7o1ip6s" path="res://muerteLabel.tscn" id="15_ubhxj"]
 [ext_resource type="PackedScene" uid="uid://daxj2a1rno54n" path="res://final_label.tscn" id="17_lhbbi"]
+[ext_resource type="AudioStream" uid="uid://di3rxgp818f0u" path="res://assets/music/level_music.wav" id="18_gjkv5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hph3"]
 texture = ExtResource("4_rka8t")
@@ -1946,6 +1947,10 @@ visible = false
 
 [node name="FinalLabel" parent="." instance=ExtResource("17_lhbbi")]
 visible = false
+
+[node name="LevelMusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_gjkv5")
+autoplay = true
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="lever_activated" from="lever" to="plataformavertical" method="activate"]

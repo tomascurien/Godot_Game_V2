@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://8geghiluehkd"]
+[gd_scene load_steps=5 format=3 uid="uid://8geghiluehkd"]
 
 [ext_resource type="Script" uid="uid://cbcnqgmwn4qan" path="res://item.gd" id="1_tnite"]
 [ext_resource type="Texture2D" uid="uid://d33kn24cc73n2" path="res://assets/sprites/key/KeyIcons.png" id="2_ttk8k"]
+[ext_resource type="AudioStream" uid="uid://2skf0vam0gij" path="res://assets/SFX/key_pickup.wav" id="3_kg5e7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tnite"]
 
@@ -15,3 +16,6 @@ hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tnite")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kg5e7")

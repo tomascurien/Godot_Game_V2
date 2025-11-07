@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqggek607bud2"]
+[gd_scene load_steps=7 format=3 uid="uid://bqggek607bud2"]
 
 [ext_resource type="Script" uid="uid://dlbjkbg4at4tp" path="res://portada.gd" id="1_i68s5"]
 [ext_resource type="Texture2D" uid="uid://b57fpcvtl2i52" path="res://assets/sprites/castle/Gemini_Generated_Image_bpdxhsbpdxhsbpdx.png" id="2_rutc4"]
+[ext_resource type="AudioStream" uid="uid://c7clabi76o6nh" path="res://assets/music/menu_music.wav" id="3_i68s5"]
 
 [sub_resource type="SystemFont" id="SystemFont_iqfp0"]
 font_names = PackedStringArray("Serif")
@@ -42,5 +43,9 @@ offset_bottom = 1024.0
 mouse_filter = 2
 texture = ExtResource("2_rutc4")
 expand_mode = 1
+
+[node name="MenuMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_i68s5")
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_Jugar_pressed"]
