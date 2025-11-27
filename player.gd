@@ -14,6 +14,7 @@ var is_attacking: bool = false
 @onready var movement_sound = $Movimiento
 @onready var death_sound = $Muerte
 @onready var footstep_timer = $FootstepTimer
+var is_dead: bool = false
 
 signal died
 
@@ -28,6 +29,13 @@ func _ready():
 	print("Player listo. AttackArea: ", attack_area)
 
 func _physics_process(delta: float) -> void:
+	if is_dead:
+		if not is_on_floor():
+			velocity.y += GRAVITY * delta
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED) # Frena suavemente
+		move_and_slide()
+		return 
 	# Gravedad
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -68,7 +76,7 @@ func _physics_process(delta: float) -> void:
 			manage_footstep_sound()
 		anim.flip_h = direction < 0
 		
-		# NUEVO: Voltear el AttackArea según la dirección
+		# Voltear el AttackArea según la dirección
 		attack_area.scale.x = -1 if direction < 0 else 1
 		
 	else:
@@ -115,20 +123,27 @@ func _push_boxes():
 			collider.apply_central_impulse(push_force * get_physics_process_delta_time())
 
 func die():
-	if $CollisionShape2D.disabled:
-		return 
+	if is_dead:
+		return
 
 	print("El jugador ha muerto. Emitiendo señal.")
-	# 3. Emite la señal para que el nivel la escuche
-	died.emit()
 	
-	# Desactiva al jugador
-	$CollisionShape2D.disabled = true
+	is_dead = true # Esto activa el bloqueo en physics_process
+	
+	velocity.x = 0
+	# Desactivamos la Layer 1 (o donde esté el player) para que los enemigos no lo detecten.
+	# PERO NO tocamos la Mask, así que el suelo lo sigue sosteniendo.
+	collision_layer = 0
 	anim.play("die")
 	death_sound.play()
+	
+	await anim.animation_finished
+	print("Animación terminada. Emitiendo señal.")
+	# Emite la señal para que el nivel la escuche
+	died.emit()
 
 func manage_footstep_sound():
-	# 2. Comprueba si el jugador se está moviendo Y está en el suelo
+	# Comprueba si el jugador se está moviendo Y está en el suelo
 	if (velocity.x != 0) and is_on_floor():
 		# Comprueba si el temporizador no está corriendo
 		if footstep_timer.is_stopped():

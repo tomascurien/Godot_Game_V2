@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b8xis3qdewodj"]
+[gd_scene load_steps=51 format=3 uid="uid://b8xis3qdewodj"]
 
 [ext_resource type="Script" uid="uid://w2k77otj3kmo" path="res://player.gd" id="1_4flbx"]
 [ext_resource type="Texture2D" uid="uid://dnwydra3pn22o" path="res://assets/sprites/player/IDLE.png" id="2_onrkg"]
@@ -109,10 +109,6 @@ region = Rect2(960, 0, 96, 84)
 [sub_resource type="AtlasTexture" id="AtlasTexture_b88wv"]
 atlas = ExtResource("4_2hs0m")
 region = Rect2(1056, 0, 96, 84)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pgbbb"]
-atlas = ExtResource("4_2hs0m")
-region = Rect2(0, 0, 96, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_606se"]
 atlas = ExtResource("4_sweqy")
@@ -250,11 +246,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b88wv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pgbbb")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -329,7 +322,7 @@ texture_filter = 1
 position = Vector2(3, -1)
 scale = Vector2(1.3, 1.218)
 sprite_frames = SubResource("SpriteFrames_b26j0")
-animation = &"walk"
+animation = &"die"
 
 [node name="AttackArea" type="Area2D" parent="." groups=["P_Punch"]]
 collision_layer = 4
