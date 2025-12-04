@@ -1976,7 +1976,7 @@ sources/0 = SubResource("TileSetAtlasSource_3qmij")
 size = Vector2(45.5, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00ld1"]
-size = Vector2(30, 16)
+size = Vector2(27, 15)
 
 [node name="level 1" type="Node2D"]
 script = ExtResource("1_65or1")
@@ -1996,7 +1996,7 @@ collision_mask = 2
 disabled = false
 
 [node name="item" parent="." instance=ExtResource("3_hn12h")]
-position = Vector2(1643, 93)
+position = Vector2(1665, 97)
 
 [node name="TileMap2" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_j7kpp")
@@ -2144,7 +2144,7 @@ autoplay = true
 position = Vector2(0, -1)
 tile_set = SubResource("TileSet_kb5eu")
 format = 2
-layer_0/tile_data = PackedInt32Array(1441839, 917504, 6, 1507375, 917504, 7, 1441840, 983040, 6, 1507376, 983040, 7, 327784, 917504, 6, 327785, 983040, 6, 327786, 917504, 6, 327787, 983040, 6, 327778, 917504, 6, 393314, 917504, 7, 327779, 983040, 6, 393315, 983040, 7, 327776, 917504, 6, 327777, 983040, 6)
+layer_0/tile_data = PackedInt32Array(1441839, 917504, 6, 1507375, 917504, 7, 1441840, 983040, 6, 1507376, 983040, 7, 327784, 917504, 6, 327785, 983040, 6, 327786, 917504, 6, 327787, 983040, 6, 327778, 917504, 6, 327779, 983040, 6, 327776, 917504, 6, 327777, 983040, 6, 327780, 917504, 6, 393316, 917504, 7, 327781, 983040, 6, 393317, 983040, 7)
 
 [node name="ZonaDeMuerte3" parent="." instance=ExtResource("7_j7kpp")]
 
@@ -2153,10 +2153,10 @@ position = Vector2(770.75, 376)
 shape = SubResource("RectangleShape2D_lfy8a")
 
 [node name="ZonaDeMuerte4" parent="." instance=ExtResource("7_j7kpp")]
-position = Vector2(1538, 103)
+position = Vector2(1616, 103)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaDeMuerte4"]
-position = Vector2(46, 2)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_00ld1")
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
